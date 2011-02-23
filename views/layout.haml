@@ -14,8 +14,9 @@
       p.error { color: red; font-weight: bold; font-size: 20px; }
       h1 { font-size: 300%; }
       a { color: #000; }
-      #header { margin-bottom: 30px; }
-      #footer { text-align: right; }
+      #header {  }
+      #content { margin: 30px 0; }
+      #footer { text-align: right; margin: 10px 0;}
   %body
 
     #header
@@ -25,7 +26,8 @@
       %form(action='/' id='search')
         %input(type='search' name='q' placeholder='rails' value=@repo size=30)
 
-    != yield
+    #content
+      != yield
 
     #footer
       created by 
@@ -42,5 +44,9 @@
         $('#search').submit(function() {
           location.href = '/' + $("#search input[name=q]").val();
           return false;
+        });
+
+        $("#search input[name=q]").focus(function() {
+          $(this).select();
         });
       });
