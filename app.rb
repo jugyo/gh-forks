@@ -28,7 +28,7 @@ get '/:repo' do
   if data["repositories"][0]
     redirect "/#{data["repositories"][0].values_at("owner", "name").join("/")}"
   else
-    haml :repository_not_found
+    haml :not_found
   end
 end
 
