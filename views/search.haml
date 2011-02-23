@@ -21,7 +21,7 @@
         %td= repo["forks"]
         %td= repo["watchers"]
         %td= repo["open_issues"]
-        %td= Time.parse(repo["pushed_at"]).utc
+        %td= Time.parse(repo["pushed_at"]).utc rescue ''
 
 :javascript
   $(function() {
