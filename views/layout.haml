@@ -11,13 +11,14 @@
     :css
       body { width: 800px; margin: 0 auto; font-size: 14px; }
       table { width: 100%; }
+      p.error { color: red; }
   %body.tk-etica-display
 
     #header
       %h1 gh-forks
 
       %form(action='/' id='search')
-        %input(type='search' name='q' placeholder='rails/rails' value=@repo)
+        %input(type='search' name='q' placeholder='rails' value=@repo size=30)
 
     != yield
 
