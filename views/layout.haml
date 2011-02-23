@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %title gh-forks
+    %script(type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js")
+    %script(type="text/javascript" src="/jquery.tablesorter.min.js")
+    %script(type="text/javascript" src="http://use.typekit.com/bgu0aux.js")
+    %link(rel="stylesheet" href="/tablesorter.css" type="text/css")
+    :javascript
+      try{Typekit.load();}catch(e){}
+    :css
+      body { width: 800px; margin: 0 auto; }
+      table { width: 100%; }
+  %body.tk-etica-display
+
+    #header
+      %h1 gh-forks
+
+      %form(action='/' id='search')
+        %input(type='search' name='q' placeholder='rails/rails' value=@repo)
+
+    != yield
+
+    :javascript
+      $(function() {
+        $(document).bind('keyup', function(event) {
+          if (event.which == 83 && !$(event.target).is(':input')) {
+            $('#search input[name=q]').focus();
+          }
+        });
+
+        $('#search').submit(function() {
+          location.href = '/' + $("#search input[name=q]").val();
+          return false;
+        });
+      });

@@ -1,0 +1,36 @@
+%h2
+  forks of
+  %a{:href=>"https://github.com/#{@repo}"}= @repo
+
+%table.tablesorter
+  %thead
+    %tr
+      %th repository
+      %th forks
+      %th watchers
+      %th open issues
+      %th pushed at
+  %tbody
+    - @data["network"].each do |repo|
+      %tr
+        %td
+          %a{:href=>"https://github.com/#{repo["owner"]}"}= repo["owner"]
+          %span(style="color: #999;") /
+          %a{:href=>repo["url"]}= repo["name"]
+        %td= repo["forks"]
+        %td= repo["watchers"]
+        %td= repo["open_issues"]
+        %td= Time.parse(repo["pushed_at"]).utc
+
+:javascript
+  $(function() {
+    $('table.tablesorter').tablesorter({
+      sortList: [[2,1]],
+      sortInitialOrder: "desc",
+      headers: {
+        0: {
+          sorter: false
+        }
+      }
+    });
+  });
