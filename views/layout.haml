@@ -9,13 +9,18 @@
     :javascript
       try{Typekit.load();}catch(e){}
     :css
-      body { width: 800px; margin: 0 auto; font-size: 14px; font-familly: sans-serif; }
+      body { width: 800px; margin: 0 auto; font-size: 14px; font-familly: Verdana; color: #666; }
       table { width: 100%; }
       p.error { color: red; font-weight: bold; font-size: 20px; }
+      h1 { font-size: 300%; }
+      h1 a { color: #999; }
+      a { color: #000; }
+      #header { margin-bottom: 30px; }
   %body
 
     #header
-      %h1.tk-edding-780 gh-forks
+      %h1.tk-edding-780
+        %a(href='/') gh-forks
 
       %form(action='/' id='search')
         %input(type='search' name='q' placeholder='rails' value=@repo size=30)
